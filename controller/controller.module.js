@@ -1,3 +1,4 @@
+// const { query } = require("express");
 const experess=require("express");
 const router=experess.Router();
 const MoviesData=require("../Movies/Movies.model");
@@ -86,15 +87,18 @@ router.get("/title/:title", async (req, res) => {
       res.status(500).json({ message: err.message });
     }
   });
-
-  router.get("/search",async (req,res)=>{
+  router.get("/search", async (req, res) => {
     try {
-      const movies = await MoviesData.find().find({});
-      res.status(200).json(movies);
+      const query = req.query.searchBy || "";
+      const albums = await MoviesData.find({
+        title: new RegExp(query, "i"),
+      }).limit(1); 
+      return res.status(200).send({ albums });
+      console.log(albums)
     } catch (err) {
       res.status(500).json({ message: err.message });
     }
-  })
+  });
 
   router.get("/page/:pageNum", async (req, res) => {
     try {

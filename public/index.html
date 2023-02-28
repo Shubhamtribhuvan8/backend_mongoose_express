@@ -9,22 +9,23 @@
 </head>
 <body>
    <h1 style="text-align: center">Movies App</h1>
-   <div style="text-align: center">
+   <div class="page">
+   <div>
     <button onclick="Mrequest2()">Sort By Dsc</button>
     <button onclick="Mrequest1()">Sort By Asc</button>
     <button onclick="Mrequest()">MoviesAll</button>
    </div>
-
+   
    <form onsubmit="Mrequest6(event)">
-    <label for="query">Search:</label>
     <input type="text" id="query" name="query">
     <button type="submit">Search</button>
   </form>
-
+</div>
+   <div style="margin-top: 1%;"></div>
    <div id="data" class="videowidth">
    </div>
 
-   <div style="text-align: center">
+   <div class="pegination">
    <button onclick="decrementCounter()">Prev</button>
    <button onclick="incrementCounter()">Next</button>
    </div>

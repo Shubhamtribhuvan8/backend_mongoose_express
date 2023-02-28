@@ -75,23 +75,23 @@ async function Mrequest5() {
        console.error(error);
    }
 }
-
 async function Mrequest6(event) {
-   event.preventDefault();
-   const query = document.getElementById("query").value;
-   try {
-       let res = await fetch(`http://localhost:8080/Movies/${query}`);
-       let data = await res.json();
-       console.log(data); 
-       MoviesAllData(data);
-       if (!Array.isArray(data.data)) {
-           throw new Error('Response data is not an array of movies');
-       }
-       let movies = data.data;
-   } catch (error) {
-       console.error(error);
-   }
-}
+    event.preventDefault();
+    const query = document.getElementById("query").value;
+    try{
+        let res = await fetch(`http://localhost:8080/Movies/title/${query}`);
+        let data = await res.json();
+        console.log(data); 
+        MoviesAllData(data);
+        if (!Array.isArray(data.albums)) {
+            throw new Error('Response data is not an array of albums');
+        }
+        let albums = data.albums;
+    } catch (error) {
+        console.error(error);
+    }
+ }
+ 
 function MoviesAllData(data){
  let movies = data;
  const moviewala = document.getElementById("data");
@@ -104,9 +104,11 @@ function MoviesAllData(data){
    title.innerText = movie.title;
    let year = document.createElement("p");
    year.innerText = `Year: ${movie.year}`;
+   let decsc = document.createElement("p");
+   decsc.innerText = movie.description;
    let rating = document.createElement("p");
    rating.innerText = `Rating: ${movie.rating}`;
-   movieDiv.append(image,title, year, rating);
+   movieDiv.append(image,title, year, rating,decsc);
    moviewala.append(movieDiv);
  });
 }
