@@ -1,0 +1,24 @@
+.videowidth {
+    /* width: 30%; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+
+}
+
+.videowidth div {
+    width: 23%;
+    font-weight: bold;
+}
+
+.videowidth img {
+    border-radius: 12px;
+
+}
+
+img {
+    width: 100%;
+    /* height: 100%; */
+}
